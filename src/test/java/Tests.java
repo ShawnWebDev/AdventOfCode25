@@ -1,15 +1,14 @@
-package day1Tests;
-
 import com.webdev.day1.Day1LinkedList;
 import com.webdev.day1.Day1Modulo;
+import com.webdev.day2.Day2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
+// mostly for running solutions and testing runtime speed
+public class Tests {
 
-public class day1Tests {
 
-    // mostly for testing runtime speeds
     @Test
     @DisplayName("Test day 1 modulo runtime")
     public void testDay1Modulo() {
@@ -26,6 +25,13 @@ public class day1Tests {
         int answer = day1.runDay1();
         System.out.println(answer);
         // ~20ms
+    }
+
+    @Test
+    @DisplayName("Test day 2 run")
+    public void testDay2Part1() {
+        Day2 day2 = new Day2();
+        Long answer = day2.runDay2Part1();
     }
 
 }
