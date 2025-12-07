@@ -30,7 +30,7 @@ public class Day1Modulo {
             sc.close();
 
         } catch (FileNotFoundException e){
-            throw new RuntimeException(e);
+            System.out.println("File not found");
         }
 
         return zeroCount;

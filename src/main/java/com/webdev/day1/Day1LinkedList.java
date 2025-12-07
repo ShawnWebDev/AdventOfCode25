@@ -40,7 +40,7 @@ public class Day1LinkedList {
             sc.close();
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("File not found");
         }
 
         return zeroCount;
