@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-// mostly for running solutions and testing runtime speed
+// for running solutions and testing runtime speed
 public class Tests {
 
 
@@ -32,6 +32,13 @@ public class Tests {
     public void testDay2Part1() {
         Day2 day2 = new Day2();
         Long answer = day2.runDay2Part1();
+    }
+
+    @Test
+    @DisplayName("Test day 2 run")
+    public void testDay2Part2() {
+        Day2 day2 = new Day2();
+        Long answer = day2.runDay2Part2();
     }
 
 }
