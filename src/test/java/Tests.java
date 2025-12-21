@@ -1,10 +1,9 @@
 import com.webdev.day1.Day1LinkedList;
 import com.webdev.day1.Day1Modulo;
 import com.webdev.day2.Day2;
+import com.webdev.day3.Day3;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 // for running solutions and testing runtime speed
@@ -30,7 +29,7 @@ public class Tests {
     }
 
     @Test
-    @DisplayName("Test day 2 run")
+    @DisplayName("Test day 2 part 1 run")
     public void testDay2Part1() {
         Day2 day2 = new Day2();
         Long answer = day2.runDay2Part1();
@@ -38,10 +37,26 @@ public class Tests {
     }
 
     @Test
-    @DisplayName("Test day 2 run")
+    @DisplayName("Test day 2 part 2 run")
     public void testDay2Part2() {
         Day2 day2 = new Day2();
         Long answer = day2.runDay2Part2();
+        System.out.println(answer);
+    }
+
+    @Test
+    @DisplayName("Test day 3 part 1 run")
+    public void testDay3Part1() {
+        Day3 day3 = new Day3();
+        int answer = day3.runDay3Part1();
+        System.out.println(answer);
+    }
+
+    @Test
+    @DisplayName("Test day 3 part 2 run")
+    public void testDay3Part2() {
+        Day3 day3 = new Day3();
+        Long answer = day3.runDay3Part2();
         System.out.println(answer);
     }
 
