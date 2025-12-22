@@ -48,6 +48,8 @@ public class Day3 {
                 totalJoltage += curr;
             }
 
+            sc.close();
+
         } catch(FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -84,6 +86,8 @@ public class Day3 {
 
                 totalJoltage += Long.parseLong(sb.toString());
             }
+
+            sc.close();
 
         } catch(FileNotFoundException e) {
             System.out.println(e.getMessage());
