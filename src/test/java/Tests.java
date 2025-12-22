@@ -1,3 +1,4 @@
+import com.webdev.Day4.Day4;
 import com.webdev.day1.Day1LinkedList;
 import com.webdev.day1.Day1Modulo;
 import com.webdev.day2.Day2;
@@ -57,6 +58,22 @@ public class Tests {
     public void testDay3Part2() {
         Day3 day3 = new Day3();
         Long answer = day3.runDay3Part2();
+        System.out.println(answer);
+    }
+
+    @Test
+    @DisplayName("Test day 4 part 1 run")
+    public void testDay4Part1() {
+        Day4 day4 = new Day4();
+        int answer = day4.runDay4Part1();
+        System.out.println(answer);
+    }
+
+    @Test
+    @DisplayName("Test day 4 part 2 run")
+    public void testDay4Part2() {
+        Day4 day4 = new Day4();
+        int answer = day4.runDay4Part2();
         System.out.println(answer);
     }
 
