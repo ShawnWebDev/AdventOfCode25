@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Day5 {
-    Path input = Paths.get("src/main/resources/testInput.txt");
+    Path input = Paths.get("src/main/resources/day5_Input.txt");
     List<long[]> freshRanges = new ArrayList<>();
     List<Long> ingredientIds = new ArrayList<>();
 
@@ -36,29 +36,41 @@ public class Day5 {
 
     public long runDay5Part2() {
 
-
         try {
             this.parseData();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        // since range is low->high - sort the ranges by the starting(low) number in ascending order,
-        // start by getting id[0] range into count and begin iteration from id[1],
-        // get difference of next range's start number to previous range's ending number,
-        // if difference is negative, start number is valid,
-        // if difference is positive, start number is added to diff,
-        // as long as end number is greater than sum, get count (end - new start)
-        // add count to total
-        // Will think on it
 
-        //???
-
+        // since range is low-high, sort the ranges by the starting(low) number in ascending order for a simple sequence check,
         freshRanges.sort(Comparator.comparing(arr -> arr[0]));
 
+        long total = 0;
+        long currentMax = 0;
 
-        return 0L;
+        for (long[] range : freshRanges) {
+            long start = range[0];
+            long end = range[1];
+            // start is higher than last max, full range is unique
+            if (start > currentMax) {
+                total += countRange(end, start);
+                currentMax = end;
+            }
+            // end is higher than last max but start is lower, part of range is unique,
+            // currentMax is counted from previous range so add 1, that is new start
+            else if (end > currentMax) {
+                total += countRange(end, currentMax + 1);
+                currentMax = end;
+            }
+            // neither is higher than last max, range is not unique
+        }
+
+        return total;
     }
 
+    private static long countRange(long end, long start) {
+        return (end - start) + 1;
+    }
 
     private void parseData() throws IOException {
         Scanner sc = new Scanner(input);
@@ -76,5 +88,6 @@ public class Day5 {
                 this.freshRanges.add(new long[]{Long.parseLong(range[0]), Long.parseLong(range[1])});
             }
         }
+        sc.close();
     }
 }
