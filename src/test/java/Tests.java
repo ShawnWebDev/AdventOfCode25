@@ -3,6 +3,7 @@ import com.webdev.day1.Day1LinkedList;
 import com.webdev.day1.Day1Modulo;
 import com.webdev.day2.Day2;
 import com.webdev.day3.Day3;
+import com.webdev.day5.Day5;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -77,4 +78,19 @@ public class Tests {
         System.out.println(answer);
     }
 
+    @Test
+    @DisplayName("Test day 5 part 1 run")
+    public void testDay5Part1() {
+        Day5 day5 = new Day5();
+        int answer = day5.runDay5Part1();
+        System.out.println("answer: " + answer);
+    }
+
+    @Test
+    @DisplayName("Test day 5 part 2 run")
+    public void testDay5Part2() {
+        Day5 day5 = new Day5();
+        long answer = day5.runDay5Part2();
+        System.out.println("answer: " + answer);
+    }
 }
