@@ -5,6 +5,7 @@ import com.webdev.day2.Day2;
 import com.webdev.day3.Day3;
 import com.webdev.day5.Day5;
 import com.webdev.day6.Day6;
+import com.webdev.day7.Day7;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -112,4 +113,20 @@ public class Tests {
         long answer = day6.runDay6Part2();
         System.out.println("answer: " + answer);
     }
+
+    @Test
+    @DisplayName("Test day 7 part 1")
+    public void testDay7Part1() {
+        Day7 day7 = new Day7();
+        int answer = day7.runDay7Part1();
+        System.out.println("answer: " + answer);
+    }
+    @Test
+    @DisplayName("Test day 7 part 2")
+    public void testDay7Part2() {
+        Day7 day7 = new Day7();
+        int answer = day7.runDay7Part2();
+        System.out.println("answer: " + answer);
+    }
+
 }
