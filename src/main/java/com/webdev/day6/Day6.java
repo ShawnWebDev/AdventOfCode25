@@ -6,17 +6,17 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class Day6 {
-    Path input = Paths.get("src/main/resources/testInput.txt");
+    Path input = Paths.get("src/main/resources/day6_Input.txt");
     Map<Integer, ArrayList<String>> map = new HashMap<>();
-    long answer = 0;
 
     public long runDay6Part1() {
         try {
-            this.parseDataPt1();
+            this.parseData(true);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         System.out.println(map);
+        long answer = 0;
 
         for (List<String> list : map.values()) {
             String operation = list.getLast();
@@ -40,52 +40,63 @@ public class Day6 {
 
     public long runDay6Part2() {
         try {
-            this.parseDataPt2();
+            this.parseData(false);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         System.out.println(map);
+        String operation = "";
+        long total = 0, answer = 0;
         for (List<String> list : map.values()) {
-            String operation = list.getLast();
-            //System.out.println(list);
-        }
-
-        return 0L;
-    }
-
-
-    private void parseDataPt1() throws IOException {
-        Scanner scanner = new Scanner(input);
-
-        while (scanner.hasNextLine()) {
-            String[] line = scanner.nextLine().split(" ");
-            int pos = 0;
-            for (String s : line) {
-                if (s.isEmpty()) {
-                    continue;
-                }
-                map.putIfAbsent(pos, new ArrayList<>());
-                map.get(pos).add(s);
-                pos++;
+            if (list.getLast().equals("+") || list.getLast().equals("*")) {
+                // new equation
+                operation = list.getLast();
+                list.set(list.size() - 1, "");
+                total = operation.equals("+") ? 0 : 1;
+                System.out.println("curr answer: " + answer);
             }
+
+            StringBuilder sb = new StringBuilder();
+            for (String s : list) {
+                if (!s.equals(" ") && !s.isEmpty()) {
+                    sb.append(s);
+                }
+            }
+            System.out.println("builder: " + sb.toString());
+            if (sb.toString().isEmpty()) {
+                answer += total;
+                continue;
+            }
+
+            int numStr = Integer.parseInt(sb.toString());
+            if (operation.equals("+")) {
+                total += numStr;
+            } else {
+                total *= numStr;
+            }
+
+            System.out.println("running total: " + total);
         }
+
+        // need to get last total
+        answer += total;
+
+        return answer;
     }
 
-    private void parseDataPt2() throws IOException {
-        Scanner scanner = new Scanner(input);
 
+    private void parseData(boolean addSpace) throws IOException {
+        Scanner scanner = new Scanner(input);
+        String splitter = addSpace ? " " : "";
         while (scanner.hasNextLine()) {
-            String[] line = scanner.nextLine().split("");
+            String[] line = scanner.nextLine().split(splitter);
             int pos = 0;
             for (String s : line) {
-                System.out.println("string: " + s);
                 if (s.isEmpty()) {
                     continue;
                 }
-                // todo : check for array of only empty space that will be new pos increment???
                 map.putIfAbsent(pos, new ArrayList<>());
                 map.get(pos).add(s);
-                System.out.println(map.get(pos));
                 pos++;
             }
         }
